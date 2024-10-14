@@ -1,26 +1,27 @@
 import unittest
 #from test_horno_industrial import hornoIndustrial
-import hornoIndustrial
+from hornoIndustrial import hornoIndustrial
 
 class TestHornoIndustril(unittest.TestCase):
     
     
     
     def controlar_temperatura(self):
-        horno = hornoIndustrial(200 , 250)
-        
+        x = 200
+        y = 300
+        horno = hornoIndustrial(x,y)
         
         #se enciende el calentador si la temperatura es minima
         horno.controlar_temperatura(190)
-        self.assertTrue(horno.calentador_encendido)
+        self.assertTrue(horno.calentador_encendida)
         
         #se debe apagar la calefaccion si la temperatura es maxima
         horno.controlar_temperatura(250)
-        self.assertFalse(horno.calentador_encendido)
+        self.assertFalse(horno.calentador_encendida)
         
         
     def  test_calentar(self):
-        horno = hornoIndustrial(200 , 250)
+        horno = hornoIndustrial(1,1)
         
         #la temperatura inicial 25°C (ambiente)
         horno.calentar(5 , calentamiento=10)
@@ -41,16 +42,16 @@ class TestHornoIndustril(unittest.TestCase):
         
         
         #simular una temperatura superior al limite de seguridad
-        horno.verificar_sistema(260 , True)
-        self.assertFalse(horno.calentador_encendido) #apagado por seguridad
+        horno.verificacion_sistema(260 , True)
+        self.assertFalse(horno.calentador_encendida) #apagado por seguridad
         
     def test_fallo_sensor(self):
         horno = hornoIndustrial(200 , 250)
         
         #simulador de fallo de sensor
-        horno.verificar_sistema(200 , False)
+        horno.verificacion_sistema(200 , False)
         self.assertTrue(horno.sistema_en_falla) # sistema en modo de falla
-        self.assertFalse(horno.calentador_encendido) # calentador apagar
+        self.assertFalse(horno.calentador_encendida) # calentador apagar
         
         
             

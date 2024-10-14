@@ -1,12 +1,11 @@
-class hornoIndustrial :
-    def __init__(self , temperatura_objetivo, limite_seguridad):
+class hornoIndustrial():
     # inicia el horno con la temperatura objetivo y limite de seguridad
-    
-      self.temperatura_objetivo = temperatura_objetivo
-      self.limite_seguridad = limite_seguridad
-      self.temperatura_actual = 30     # temperatura inicial
-      self.calentador_encendido = False
-      self.sistema_en_falla = False
+    def __init__(self , temperatura_objetivo, limite_seguridad):
+        self.temperatura_objetivo = temperatura_objetivo
+        self.limite_seguridad = limite_seguridad
+        #self.temperatura_actual = 30     # temperatura inicial
+        #self.calentador_encendido = False
+        #self.sistema_en_falla = False
       
     def controlar_temperatura(self , temperatura_actual):
         #controla temperatura encendido o apagado en el calentador 
